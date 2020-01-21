@@ -1,28 +1,46 @@
 const Visitor = require('../src/visitor.js');
-const objVisitor = new Visitor("Lebo Mpe",30,"12/10/2020","13:00","He is in","Mesuli");
+var fs = require('fs');
+var obj;
 
+let objVisitor = {
+    full_name: "Sephula Mokoena",
+    age: 30,
+    date_of_visit: "12/10/2020",
+    time_of_visit: "13:00",
+    comments: "He is in",
+    assistant: "Mesuli"
+}
+const visitor = new Visitor(
+    objVisitor.full_name,
+    objVisitor.age,objVisitor.date_of_visit,objVisitor.time_of_visit,objVisitor.comments,objVisitor.assistant
+    );
+    let file_name = visitor.full_name.replace(" ", "_").toLowerCase();
 
 describe('save() function', function (){
-   
-   it('should save all values in a .json file', function() {
-        expect(JSON.stringify(objVisitor)).toBeDefined();
-   });
+    var content = fs.readFileSync(`visitor_${file_name}.json`,"utf8");
+    obj = JSON.parse(content);
+    it('should save all the constructor values in a .json file', function () {
 
-   it('should throw an error when the function is unable to create a new file ', () => {
-    file = function () {
-        throw ('Cannot save file');
-    }
-    expect(file).toThrow('Cannot save file');
-});
+        expect(objVisitor.full_name).toBe(obj.full_name);
+        expect(objVisitor.age).toBe(obj.age);
+        expect(objVisitor.date_of_visit).toBe(obj.date_of_visit);
+        expect(objVisitor.time_of_visit).toBe(obj.time_of_visit);
+        expect(objVisitor.comments).toBe(obj.comments);
+        expect(objVisitor.assistant).toBe(obj.assistant);
+    });
    
 
 
 
 describe('load() function', function(){
     
-      
-    it('should load .json file', () => {
-      expect(JSON.stringify(objVisitor)).toEqual('{"full_name":"Lebo Mpe","age":30,"date_of_visit":"12/10/2020","time_of_visit":"13:00","comments":"He is in","assistant":"Mesuli"}');
+   
+    
+    var content = fs.readFileSync(`visitor_${file_name}.json`,"utf8");
+    var obj = JSON.parse(content);
+    it('should load .json file',function () {
+        expect(objVisitor).toEqual(obj);
     });
+    console.log(obj);
 });
-})
+});

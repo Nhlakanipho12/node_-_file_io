@@ -20,7 +20,7 @@ class Visitor{
         } catch (error) {
             console.log(error);
         }
-        
+       
         
     }
 
@@ -28,12 +28,15 @@ class Visitor{
         
         let file_name = full_name.replace(" ", "_").toLowerCase();
             fs.readFile(`visitor_${file_name}.json`, "utf8",(error,info) => {
-                if(!error)
+                if(error) return callback(error);
                 console.log(info);
               });
+              
+              
     }
+   
 }
-// var senzo = new Visitor("Lebo Mpe",30,"12/10/2020","13:00","He is in","Mesuli");
-// // senzo.save();
-// senzo.load("Lebo Mpe");
-module.exports = Visitor
+if ( typeof module !== 'undefined' && module.hasOwnProperty('exports') )
+{
+    module.exports = Visitor;
+}
