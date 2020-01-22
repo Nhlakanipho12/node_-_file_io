@@ -18,7 +18,6 @@ const visitor = new Visitor(
     
 
 describe('save() function ', function (){
-    
     it('must be a function', function () {
             expect(visitor.save).toBeTruthy();
         });
@@ -27,7 +26,6 @@ describe('save() function ', function (){
 
 describe('save() function', function (){
     var content = fs.readFileSync(`visitor_${file_name}.json`,"utf8");
-   
     obj = JSON.parse(content);
     it('should save all the constructor values in a .json file', function () {
         expect(objVisitor.full_name).toBe(obj.full_name);
@@ -41,7 +39,7 @@ describe('save() function', function (){
 });
 
 
-describe('save() function ', function (){
+describe('load() function ', function (){
     it('must be a function', function () {
             expect(visitor.load).toBeDefined();
         });
