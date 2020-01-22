@@ -28,7 +28,7 @@ class Visitor{
         
         let file_name = full_name.replace(" ", "_").toLowerCase();
             fs.readFile(`visitor_${file_name}.json`, "utf8",(error,info) => {
-                if(error) return callback(error);
+                if(error) return error;
                 console.log(info);
               });
               
@@ -36,6 +36,7 @@ class Visitor{
     }
    
 }
+
 if ( typeof module !== 'undefined' && module.hasOwnProperty('exports') )
 {
     module.exports = Visitor;
