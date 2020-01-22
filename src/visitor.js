@@ -20,8 +20,6 @@ class Visitor{
         } catch (error) {
             console.log(error);
         }
-       
-        
     }
 
     load(full_name){
@@ -30,9 +28,7 @@ class Visitor{
             fs.readFile(`visitor_${file_name}.json`, "utf8",(error,info) => {
                 if(error) return error;
                 console.log(info);
-              });
-              
-              
+              }); 
     }
    
 }
