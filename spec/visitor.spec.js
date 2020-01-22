@@ -44,7 +44,7 @@ describe('load() function ', function (){
             expect(visitor.load).toBeDefined();
         });
     });
-
+//spelling error
 describe('load() function', function(){
     var content = fs.readFileSync(`visitor_${file_name}.json`,"utf8");
     var obj = JSON.parse(content);
